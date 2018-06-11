@@ -25,10 +25,16 @@ problem_TV = InitialValueProblem(S, X0)
 ISU01 = LinearConstraintProperty([Clause(LinearConstraint(Cvec, 0.0005)), Clause(LinearConstraint(-Cvec, 0.0005))])
 ISS01 = LinearConstraintProperty([Clause(LinearConstraint(Cvec, 0.0007)), Clause(LinearConstraint(-Cvec, 0.0007))])
 
+sol = solve(problem_TV, :T=>time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>ISU01, :projection_matrix=>C, :assume_sparse=>true)
 SUITE["ISS"]["ISU01", "dense"] = @benchmarkable solve($problem_TV, :T=>$time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>$ISU01, :projection_matrix=>$C, :assume_sparse=>true)
+
+sol = solve(problem_TV, :T=>time_horizon, :δ=>6e-4, :vars=>136:270, :mode=>"check", :property=>ISS01, :projection_matrix=>C, :assume_sparse=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 SUITE["ISS"]["ISS01", "dense"] = @benchmarkable solve($problem_TV, :T=>$time_horizon, :δ=>6e-4, :vars=>136:270, :mode=>"check", :property=>$ISS01, :projection_matrix=>$C, :assume_sparse=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 
+sol = solve(problem_TV, :approx_model=>"nobloating", :T=>time_horizon, :δ=>5e-3, :vars=> 136:270, :mode=>"check", :property=>ISU01, :projection_matrix=>C, :assume_sparse=>true)
 SUITE["ISS"]["ISU01", "discrete"] = @benchmarkable solve($problem_TV, :approx_model=>"nobloating", :T=>$time_horizon, :δ=>5e-3, :vars=> 136:270, :mode=>"check", :property=>$ISU01, :projection_matrix=>$C, :assume_sparse=>true)
+
+sol = solve(problem_TV, :approx_model=>"nobloating", :T=>time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>ISS01, :projection_matrix=>C, :assume_sparse=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 SUITE["ISS"]["ISS01", "discrete"] = @benchmarkable solve($problem_TV, :approx_model=>"nobloating", :T=>$time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>$ISS01, :projection_matrix=>$C, :assume_sparse=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 
 # ==============================
@@ -50,8 +56,14 @@ Cvec = C[1, :]
 ISU02 = LinearConstraintProperty([Clause(LinearConstraint(Cvec, 0.00017)), Clause(LinearConstraint(-Cvec, 0.00017))])
 ISS02 = LinearConstraintProperty([Clause(LinearConstraint(Cvec, 0.0005)), Clause(LinearConstraint(-Cvec, 0.0005))])
 
+sol = solve(problem_CONST, :T=>time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>ISU02, :projection_matrix=>C, :assume_sparse=>true, :assume_homogeneous=>true)
 SUITE["ISS"]["ISU02", "dense"] = @benchmarkable solve($problem_CONST, :T=>$time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>$ISU02, :projection_matrix=>$C, :assume_sparse=>true, :assume_homogeneous=>true)
+
+sol = solve(problem_CONST, :T=>time_horizon, :δ=>5e-3, :vars=> 136:270, :mode=>"check", :property=>ISS02, :projection_matrix=>C, :assume_sparse=>true, :assume_homogeneous=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 SUITE["ISS"]["ISS02", "dense"] = @benchmarkable solve($problem_CONST, :T=>$time_horizon, :δ=>5e-3, :vars=> 136:270, :mode=>"check", :property=>$ISS02, :projection_matrix=>$C, :assume_sparse=>true, :assume_homogeneous=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 
+sol = solve(problem_CONST, :approx_model=>"nobloating", :T=>time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>ISU02, :projection_matrix=>C, :assume_sparse=>true, :assume_homogeneous=>true)
 SUITE["ISS"]["ISU02", "discrete"] = @benchmarkable solve($problem_CONST, :approx_model=>"nobloating", :T=>$time_horizon, :δ=>5e-3, :vars=>136:270, :mode=>"check", :property=>$ISU02, :projection_matrix=>$C, :assume_sparse=>true, :assume_homogeneous=>true)
+
+sol = solve(problem_CONST, :approx_model=>"nobloating", :T=>time_horizon, :δ=>5e-3, :vars=> 136:270, :mode=>"check", :property=>ISS02, :projection_matrix=>C, :assume_sparse=>true, :assume_homogeneous=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])
 SUITE["ISS"]["ISS02", "discrete"] = @benchmarkable solve($problem_CONST, :approx_model=>"nobloating", :T=>$time_horizon, :δ=>5e-3, :vars=> 136:270, :mode=>"check", :property=>$ISS02, :projection_matrix=>$C, :assume_sparse=>true, :assume_homogeneous=>true, :lazy_inputs_interval=>-1, :partition=>[1:135, 136:270])

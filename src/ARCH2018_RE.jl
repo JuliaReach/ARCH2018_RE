@@ -1,5 +1,3 @@
 module ARCH2018_RE
-
-# package code goes here
-
+    nothing # this is a wrapper module for the benchmarks
 end # module

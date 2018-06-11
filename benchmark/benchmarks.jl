@@ -4,6 +4,7 @@ SUITE = BenchmarkGroup()
 include("../src/SpaceStation/iss.jl")
 include("../src/Building/build.jl")
 
+#=
 # From BenchmarkTools.jl
 # ----------------------
 paramspath = joinpath(dirname(@__FILE__), "params.json")
@@ -14,4 +15,4 @@ else
     tune!(SUITE)
     BenchmarkTools.save(paramspath, params(SUITE));
 end
-
+=#

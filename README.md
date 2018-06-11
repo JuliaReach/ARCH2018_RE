@@ -69,8 +69,8 @@ $ ./install.sh
 *Note.* The script `install.sh` evaluates the following commands in your Julia installation:
 
 ```julia
-julia> Pkg.clone("https://github.com/JuliaReach/Reachability.jl")
-julia> Pkg.clone("https://github.com/JuliaReach/ARCH2018_RE.jl")
+julia> Pkg.clone("https://github.com/JuliaReach/Reachability.git")
+julia> Pkg.clone("https://github.com/JuliaReach/ARCH2018_RE.git")
 julia> Pkg.add("BenchmarkTools")
 julia> Pkg.add("PkgBenchmark")
 ```

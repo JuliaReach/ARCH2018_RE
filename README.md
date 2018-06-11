@@ -97,7 +97,9 @@ julia> results = benchmarkpkg("ARCH2018_RE")
 julia> export_markdown("results.md", results)
 ```
 Each computation is performed several times, to reduce noise and obtain
-statistically meaningful timings. In the results tables, the reported time is the minimum time.
+statistically meaningful timings. The script can take several minutes.
+
+In the results tables, the reported time is the minimum time in seconds for each safety property check.
 Other statistics such as mean and max values can be found by looking at the entries
 of the `results` structure. For more advanced settings we refer to the official
 [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md) documentation.

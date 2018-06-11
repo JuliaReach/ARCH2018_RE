@@ -4,7 +4,7 @@ This is the readme file of the ARCH2018 Repeatibility Evaluation (RE) package.
 Instructions are provided for installing and running the benchmarks.
 
 *Note.* `ARCH18_RE.jl` is just a "wrapper" module for running the benchmarks of this RE.
-The actual algorithms belong to the package [Reachability.j](https://github.com/JuliaReach/Reachability.jl).
+The actual algorithms belong to the package [Reachability.jl](https://github.com/JuliaReach/Reachability.jl).
 
 ## Introduction
 
@@ -13,11 +13,12 @@ This year we have considered purely continuous models only. These are:
 - International Space Station (ISS) alias `SpaceStation`.
 - Building model alias `Building`. 
 
-*Overview.* To install and run the benchmarks, basically these three steps are needed:
+**Overview.** To install and run the benchmarks, basically these three steps are needed:
 
 1. Download and install Julia using the official download links.
-2. Download `Reachability.jl` and its dependencies using the script `install.sh`.
-3. Run the benchmarks and obtain results using the script `run.sh`.
+2. Download `Reachability.jl` and its dependencies. For that purpose we provide the script `install.sh`.
+3. Run the benchmarks and obtain results. For that purpose we provide the script `run.sh`. The results
+   are saved in the file `results.md`.
 
 Below we explain these steps in some detail. A section on known issues is given
 in the end. If you still have problems or questions, do contact us in
@@ -25,7 +26,7 @@ our [gitter channel](https://gitter.im/JuliaReach/Lobby) or via email.
 
 ## Installation
 
-This package requires Julia v0.6. Refer to the [official documentation](https://julialang.org/downloads)
+This package requires Julia v0.6.x. Refer to the [official documentation](https://julialang.org/downloads)
 on how to install and run Julia in your system. 
 
 Once you have installed Julia, you should be able to open it in a terminal (shell)
@@ -63,7 +64,7 @@ julia> Pkg.add("BenchmarkTools")
 julia> Pkg.add("PkgBenchmark")
 ```
 Since `Reachability.jl` has several dependencies and the other packages also
-have their dependencies, this whole process will take several minutes in a fresh
+have their dependencies, this whole process will take between 5-20 minutes in a fresh
 Julia installation.
 
 ## Running the benchmarks
@@ -77,9 +78,18 @@ $ ./run.sh
 
 The `results.md` file is saved in your current working directory.
 
-*Note.* This script just executes the commands needed to execute the reachability computations
-in the `/src` folder. These computations are done several times, to obtain statistically
-meaningful timings.
+*Note.* This script automatically executes the commands needed to launch the reachability computations,
+
+```julia
+julia> using PkgBenchmark, Reachability
+julia> results = benchmarkpkg("ARCH2018_RE")
+julia> export_markdown("results.md", results)
+```
+Each computation is performed several times, to reduce noise and obtain
+statistically meaningful timings. In the results tables, the reported time is the minimum time.
+Other statistics such as mean and max values can be found by looking at the entries
+of the `results` structure. For more advanced settings we refer to the official
+[BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md) documentation.
 
 ## Known issues
 
@@ -90,4 +100,4 @@ meaningful timings.
    $ chmod 744 run.sh
    ```
 
-2. If running a script gave failures, try running it a second time.
+2. If running one of the shell scripts give failures, try running it a second time.

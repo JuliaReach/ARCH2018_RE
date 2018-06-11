@@ -24,6 +24,17 @@ Below we explain these steps in some detail. A section on known issues is given
 in the end. If you still have problems or questions, do contact us in
 our [gitter channel](https://gitter.im/JuliaReach/Lobby) or via email.
 
+### About JuliaReach
+
+*JuliaReach* is a software framework for reachability computations of dynamical systems, available at the [JuliaReach github project website](http://github.com/JuliaReach).
+It is written in Julia, a modern high-level language for scientific computing.
+Currently *JuliaReach* can handle continuous affine systems. The reachability algorithm uses a block decomposition technique presented in *DBLP:conf/hybrid/BogomolovFFVPS18*.
+Here we partition the state space, project the initial states to subspaces, and propagate these low-dimensional sets in time. This allows us to perform otherwise expensive set operations in low dimensions. Furthermore, if the output does not depend on all dimensions, we can effectively skip the reach set computation for the respective dimensions. In the evaluation we used two-dimensional blocks, for which our implementation supports epsilon-close approximation; for box approximation we can handle arbitrary partitions.
+For the set computations we use the *LazySets* library, which is also part of the *JuliaReach* framework.
+*LazySets* exploits the principle of lazy (on-demand) evaluation and uses support functions to represent lazy sets.
+*JuliaReach* also comes with *SX*, a parser for SX (SpaceEx format) model files.
+For next year we plan to add support for hybrid dynamics, which will require a careful balance between low- and high-dimensional computations and adaptive choice of the partition.
+
 ## Installation
 
 This package requires Julia v0.6.x. Refer to the [official documentation](https://julialang.org/downloads)

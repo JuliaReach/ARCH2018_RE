@@ -11,7 +11,7 @@ The actual algorithms belong to the package [Reachability.jl](https://github.com
 This year we have considered purely continuous models only. These are:
 
 - International Space Station (ISS) alias `SpaceStation`.
-- Building model alias `Building`. 
+- Building model alias `Building`.
 
 **Overview.** To install and run the benchmarks, basically these three steps are needed:
 
@@ -38,7 +38,7 @@ For next year we plan to add support for hybrid dynamics, which will require a c
 ## Installation
 
 This package requires Julia v0.6.x. Refer to the [official documentation](https://julialang.org/downloads)
-on how to install and run Julia in your system. 
+on how to install and run Julia in your system.
 
 Once you have installed Julia, you should be able to open it in a terminal (shell)
 with the command `julia`, and see the welcome message similar to
@@ -71,46 +71,45 @@ $ ./install.sh
 ```julia
 julia> Pkg.clone("https://github.com/JuliaReach/Reachability.git")
 julia> Pkg.clone("https://github.com/JuliaReach/ARCH2018_RE.git")
-julia> Pkg.add("BenchmarkTools")
-julia> Pkg.add("PkgBenchmark")
 ```
 Since `Reachability.jl` has several dependencies and the other packages also
-have their dependencies, this whole process will take between 5-20 minutes in a fresh
-Julia installation.
+have their dependencies, this whole process will take between 5-20 minutes in a
+fresh Julia installation.
 
 ## Running the benchmarks
 
 To run and get the benchmark results in the file `results.md`, execute the
-bash script `run.sh` with the command:
+Julia script `run.julia` with the command:
 
 ```
-$ ./run.sh
+$ julia --color=yes run.jl
 ```
 
 The `results.md` file is saved in your current working directory.
 
-*Note.* This script automatically executes the commands needed to launch the reachability computations,
+*Note.*  To obtain statistically meaningful performance measures, each reachability
+computation is performed several times. The script can take several minutes.
 
-```julia
-julia> using PkgBenchmark, Reachability
-julia> results = benchmarkpkg("ARCH2018_RE")
-julia> export_markdown("results.md", results)
-```
-Each computation is performed several times, to reduce noise and obtain
-statistically meaningful timings. The script can take several minutes.
+In the results tables, the reported time is the minimum time in seconds for each
+safety property check. Other statistics such as mean and max values can be found
+by looking at the entries of the `results` structure.
 
-In the results tables, the reported time is the minimum time in seconds for each safety property check.
-Other statistics such as mean and max values can be found by looking at the entries
-of the `results` structure. For more advanced settings we refer to the official
-[BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md) documentation.
+For more advanced testing settings we refer to the official
+[BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md)
+documentation.
 
-## Known issues
+## Troubleshooting
 
 1. To be able to run the shell script, you may have to give the appropriate permissions.
    In Linux and MacOS systems this is done with the command:
 
    ```
-   $ chmod 744 run.sh
+   $ chmod 744 install.sh
    ```
 
-2. If running one of the shell scripts give failures, try running it a second time.
+2. If running one scripts give failures, try running it a second time.
+
+3. See also the installation instructions of the [LazySets.jl](https://juliareach.github.io/LazySets.jl/latest/man/getting_started.html) library.
+
+4. If you still have trouble, don't hesitate to contact us in our
+[gitter channel](https://gitter.im/JuliaReach/Lobby).

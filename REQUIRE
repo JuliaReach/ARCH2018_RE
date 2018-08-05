@@ -1,4 +1,4 @@
 julia 0.6
-BenchmarkTools
-PkgBenchmark
-MAT
+BenchmarkTools 0.3.2
+PkgBenchmark 0.1.1
+MAT 0.4.0

@@ -1,7 +1,10 @@
 # ARCH2018_RE
 
-:newspaper: :checkered_flag: The paper is now available online, see [ARCH-COMP18 Category Report: Continuous and Hybrid Systems with Linear Continuous Dynamics](https://easychair.org/publications/paper/4cGr). 
-Matthias Althoff, Stanley Bak, Xin Chen, Chuchu Fan, Marcelo Forets, Goran Frehse, Niklas Kochdumper, Yangge Li, Sayan Mitra, Rajarshi Ray, Christian Schilling and Stefan Schupp 
+:trophy: :nerd_face: The *Most Promising Research Award* of the ARCH 2018 Friendly Competition was given to [JuliaReach](juliareach.org) for the results obtained in the `ARCH2018_RE`, see the [announcement here](https://cps-vo.org/node/55228).
+
+---
+
+:newspaper: :checkered_flag: The paper with the results of the RE is now available online, [ARCH-COMP18 Category Report: Continuous and Hybrid Systems with Linear Continuous Dynamics](https://easychair.org/publications/paper/4cGr). Matthias Althoff, Stanley Bak, Xin Chen, Chuchu Fan, Marcelo Forets, Goran Frehse, Niklas Kochdumper, Yangge Li, Sayan Mitra, Rajarshi Ray, Christian Schilling and Stefan Schupp (2018) ARCH18. 5th International Workshop on Applied Verification of Continuous and Hybrid Systems, 54: 23–52. doi: 10.29007/73mb. Packages: [Reachability.jl.](https://github.com/JuliaReach/Reachability.jl)
 
 ---
 

@@ -1,5 +1,10 @@
 # ARCH2018_RE
 
+:newspaper: :checkered_flag: The paper is now available online, see [ARCH-COMP18 Category Report: Continuous and Hybrid Systems with Linear Continuous Dynamics](https://easychair.org/publications/paper/4cGr). 
+Matthias Althoff, Stanley Bak, Xin Chen, Chuchu Fan, Marcelo Forets, Goran Frehse, Niklas Kochdumper, Yangge Li, Sayan Mitra, Rajarshi Ray, Christian Schilling and Stefan Schupp 
+
+---
+
 This is the readme file of the ARCH2018 Repeatibility Evaluation (RE) package.
 Instructions are provided for installing and running the benchmarks.
 

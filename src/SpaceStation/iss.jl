@@ -10,7 +10,7 @@ A, B, C = sparse(read(file, "A")), read(file, "B"), Matrix(read(file, "C")[3, :]
 n = size(A, 1)
 Cvec = C[:]
 time_horizon = 20.0
-X0 = BallInf(zeros(size(A, 1)), 0.0001)
+X0 = BallInf(zeros(n), 0.0001)
 
 # ==============================
 # Time-varying input

@@ -11,7 +11,7 @@ H = readsxmodel(file, ST=ConstrainedLinearControlContinuousSystem)
 
 n = size(H.modes[1].A, 1)-1
 A = H.modes[1].A[1:n, 1:n] 
-B = eye(n)
+B = Matrix(1.0I, n, n)
 U = Hyperrectangle(low=[0.8], high=[1.0])
 X, Uin = nothing, ConstantInput(H.modes[1].B[1:n, 1] * U)
 S = ConstrainedLinearControlContinuousSystem(A, B, X, Uin)

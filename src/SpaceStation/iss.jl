@@ -5,18 +5,18 @@ SUITE["ISS"] = BenchmarkGroup()
 # ==============================
 # Load model
 # ==============================
-file = @relpath "iss.mat"
-file = matopen(file)
+file = matopen(@relpath "iss.mat")
 A, B, C = sparse(read(file, "A")), read(file, "B"), Matrix(read(file, "C")[3, :]')
+n = size(A, 1)
 Cvec = C[:]
 time_horizon = 20.0
-X0 = BallInf(zeros(size(A, 1)), 0.0001)
+X0 = BallInf(zeros(n), 0.0001)
 
 # ==============================
 # Time-varying input
 # ==============================
 U = Hyperrectangle(low=[0.0, 0.8, 0.9], high=[0.1, 1., 1.])
-S = ConstrainedLinearControlContinuousSystem(A, eye(A), nothing, ConstantInput(B * U))
+S = ConstrainedLinearControlContinuousSystem(A, Matrix(1.0I, n, n), nothing, ConstantInput(B * U))
 problem_TV = InitialValueProblem(S, X0)
 
 # ==============================

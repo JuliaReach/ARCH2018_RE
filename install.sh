@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install dependencies using Julia's package manager
-julia6 --color=yes -e 'Pkg.add("MathematicalSystems");
+julia --color=yes -e 'Pkg.add("MathematicalSystems");
                       repo = LibGit2.GitRepo(joinpath(Pkg.dir(), "MathematicalSystems"));
                       LibGit2.branch!(repo, "Pin_3451c", "3451ce51bfa15078279610d5d8c3eb62f23ca3ea");
 

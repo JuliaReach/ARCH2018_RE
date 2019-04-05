@@ -25,9 +25,11 @@ time_horizon = 20.0
 pBDS01 = LinearConstraintProperty(sparsevec([25], [1.0], 48), 0.0051) # x25 <= 0.0051
 
 sol = solve(problem, :property => pBDS01, :T=>time_horizon, :δ=>δ_max, :vars=>[25], :mode=>"check")
+@assert sol.satisfied
 SUITE["Build"]["BLDF01-BDS01", "dense"] = @benchmarkable solve($problem, :property => $pBDS01, :T=>$time_horizon, :δ=>$δ_max, :vars=>[25], :mode=>"check")
 
 sol = solve(problem, :approx_model=>"nobloating", :property=>pBDS01, :T=>time_horizon, :δ=>δ_max, :vars=>[25], :mode=>"check")
+@assert sol.satisfied
 SUITE["Build"]["BLDF01-BDS01", "discrete"] = @benchmarkable solve($problem, :approx_model=>"nobloating", :property => $pBDS01, :T=>$time_horizon, :δ=>$δ_max, :vars=>[25], :mode=>"check")
 
 # ================
@@ -44,7 +46,9 @@ problemConst = InitialValueProblem(S, X0);
 pBLDC01 = LinearConstraintProperty(sparsevec([25], [1.0], n+1), 0.0051) # x25 <= 0.0051
 
 sol = solve(problemConst, :T=>time_horizon, :δ=>δ_max, :vars=>[25], :mode=>"check", :property => pBLDC01, :assume_homogeneous=>true)
+@assert sol.satisfied
 SUITE["Build"]["BLDC01-BDS01", "dense"] = @benchmarkable solve($problemConst, :T=>$time_horizon, :δ=>$δ_max, :vars=>[25], :mode=>"check", :property => $pBLDC01, :assume_homogeneous=>true)
 
 sol = solve(problemConst, :T=>time_horizon, :δ=>δ_max, :vars=>[25], :mode=>"check", :property => pBLDC01, :assume_homogeneous=>true)
+@assert sol.satisfied
 SUITE["Build"]["BLDC01-BDS01", "discrete"] = @benchmarkable solve($problemConst, :approx_model=>"nobloating", :T=>$time_horizon, :δ=>$δ_max, :vars=>[25], :mode=>"check", :property => $pBLDC01, :assume_homogeneous=>true)

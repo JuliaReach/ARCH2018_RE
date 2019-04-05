@@ -24,9 +24,10 @@ This year we have considered purely continuous models only. These are:
 **Overview.** To install and run the benchmarks, basically these three steps are needed:
 
 1. Download and install Julia using the official download links.
-2. Clone this repository and run the `install.sh` script to install the required
+2. Clone this repository and run the script `install.jl` to install the required
    Julia packages and dependencies.
-3. Run the benchmarks to obtain results using the script `run.sh` and see `results.md`.
+3. Run the benchmarks to obtain results using the script `run.jl`; the reuslts
+   are stored in `results.md`.
 
 Below we explain these steps in some detail. A section on known issues is given
 in the end. If you still have problems or questions, do contact us in
@@ -46,7 +47,7 @@ For next year we plan to add support for hybrid dynamics, which will require a c
 ## Installation
 
 **Important note.** The `master` branch in this repository and the installation
-script `insta..sh` are meant to be a "screenshot" of the packages ecosystem for
+script `install.jl` are thought to be a "screenshot" of the packages ecosystem for
 this RE. If you intend to use JuliaReach for other purposes, we highly recommend
 that you use the currently long-term support Julia version and follow the installation
 instructions in [Reachability.jl](https://github.com/JuliaReach/Reachability.jl).
@@ -76,11 +77,11 @@ $ julia
 julia>
 ```
 
-To install the reachability API we provide the shell script `install.sh` contained
-in this folder. Execute the script `install.sh` with the command:
+To install the reachability API we provide the script `install.jl`.
+Execute the script with the command:
 
 ```
-$ ./install.sh
+$ julia --color=yes install.jl
 ```
 
 *Note.* The installation and compilation time depends with an average internet
@@ -109,16 +110,9 @@ documentation.
 
 ## Troubleshooting
 
-1. To be able to run the shell script, you may have to give the appropriate permissions.
-   In Linux and MacOS systems this is done with the command:
+1. If running one scripts give failures, try running it a second time.
 
-   ```
-   $ chmod 744 install.sh
-   ```
+2. See also the installation instructions of the [LazySets.jl](https://juliareach.github.io/LazySets.jl/latest/man/getting_started.html) library.
 
-2. If running one scripts give failures, try running it a second time.
-
-3. See also the installation instructions of the [LazySets.jl](https://juliareach.github.io/LazySets.jl/latest/man/getting_started.html) library.
-
-4. If you still have trouble, don't hesitate to contact us in our
+3. If you still have trouble, don't hesitate to contact us in our
 [gitter channel](https://gitter.im/JuliaReach/Lobby).

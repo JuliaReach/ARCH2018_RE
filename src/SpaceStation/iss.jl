@@ -16,7 +16,7 @@ X0 = BallInf(zeros(n), 0.0001)
 # Time-varying input
 # ==============================
 U = Hyperrectangle(low=[0.0, 0.8, 0.9], high=[0.1, 1., 1.])
-S = ConstrainedLinearControlContinuousSystem(A, Matrix(1.0I, n, n), nothing, ConstantInput(B * U))
+S = ConstrainedLinearControlContinuousSystem(A, eye(n), nothing, ConstantInput(B * U))
 problem_TV = InitialValueProblem(S, X0)
 
 # ==============================

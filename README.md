@@ -24,9 +24,9 @@ This year we have considered purely continuous models only. These are:
 **Overview.** To install and run the benchmarks, basically these three steps are needed:
 
 1. Download and install Julia using the official download links.
-2. Download `Reachability.jl` and its dependencies. For that purpose we provide the script `install.sh`.
-3. Run the benchmarks and obtain results. For that purpose we provide the script `run.sh`. The results
-   are saved in the file `results.md`.
+2. Clone this repository and run the `install.sh` script to install the required
+   Julia packages and dependencies.
+3. Run the benchmarks to obtain results using the script `run.sh` and see `results.md`.
 
 Below we explain these steps in some detail. A section on known issues is given
 in the end. If you still have problems or questions, do contact us in
@@ -45,12 +45,21 @@ For next year we plan to add support for hybrid dynamics, which will require a c
 
 ## Installation
 
-This package requires Julia v0.6.x. Refer to the [official documentation](https://julialang.org/downloads)
-on how to install and run Julia in your system.
+**Important note.** The `master` branch in this repository and the installation
+script `insta..sh` are meant to be a "screenshot" of the packages ecosystem for
+this RE. If you intend to use JuliaReach for other purposes, we highly recommend
+that you use the currently long-term support Julia version and follow the installation
+instructions in [Reachability.jl](https://github.com/JuliaReach/Reachability.jl).
+See also the [ReachabilityBenchmarks](https://github.com/JuliaReach/ReachabilityBenchmarks.jl)
+project, which contains updated model files for the latest packages versions.
 
-Once you have installed Julia, you should be able to open it in a terminal (shell)
-with the command `julia`, and see the welcome message similar to
+This RE requires Julia v0.6.4. Refer to the [official documentation](https://julialang.org/downloads)
+on how to install and run Julia in your system. Notice that v0.6.4 is currently
+found under the *older releases* page.
 
+Once you have installed Julia, you should be able to change directory where the
+command `julia` is available to run the program, and once you do `$ julia`,
+the welcome message similar to:
 
 ```
 $ julia
@@ -74,33 +83,25 @@ in this folder. Execute the script `install.sh` with the command:
 $ ./install.sh
 ```
 
-*Note.* The script `install.sh` evaluates the following commands in your Julia installation:
-
-```julia
-julia> Pkg.clone("https://github.com/JuliaReach/Reachability.git")
-julia> Pkg.clone("https://github.com/JuliaReach/ARCH2018_RE.git")
-```
-Since `Reachability.jl` has several dependencies and the other packages also
-have their dependencies, this whole process will take between 5-20 minutes in a
-fresh Julia installation.
+*Note.* The installation and compilation time depends with an average internet
+connection can take around 10-20 minutes.
 
 ## Running the benchmarks
 
-To run and get the benchmark results in the file `results.md`, execute the
-Julia script `run.julia` with the command:
+To run the benchmarks execute:
 
 ```
 $ julia --color=yes run.jl
 ```
 
-The `results.md` file is saved in your current working directory.
+A `results.md` file containing the results for each benchmark in table format is
+saved in your current working directory.
 
 *Note.*  To obtain statistically meaningful performance measures, each reachability
-computation is performed several times. The script can take several minutes.
-
-In the results tables, the reported time is the minimum time in seconds for each
-safety property check. Other statistics such as mean and max values can be found
-by looking at the entries of the `results` structure.
+computation is performed several times. The script can take several minutes. The
+time displayed in the tables is the minimum time for the given trials. If you are
+interested in other statistics, such as mean or median, these can be found by
+looking at the entries of the `results` object.
 
 For more advanced testing settings we refer to the official
 [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md)

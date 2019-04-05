@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# exact commit versions for the ARCH2018_RE Repeatability Evaluation for the packages
-# that require it:
-#MathematicalSystems_SHA="3451ce51bfa15078279610d5d8c3eb62f23ca3ea"
-#LazySets_SHA="08150a1307f9c25c5e02fe7fe9a74e102049bd6e"
-#SX_SHA="0bee143c44c1e6d9210e6754910f03bca7ad1a11"
-#Reachability_SHA="73f9ee92342e4d46418589d34200c5682bcb8609"
-
 # install dependencies using Julia's package manager
 julia6 --color=yes -e 'Pkg.add("MathematicalSystems");
                       repo = LibGit2.GitRepo(joinpath(Pkg.dir(), "MathematicalSystems"));

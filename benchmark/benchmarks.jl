@@ -1,9 +1,5 @@
 using BenchmarkTools, ARCH2018_RE
 
-@static if VERSION >= v"0.7"
-    using SparseArrays, LinearAlgebra
-end
-
 SUITE = BenchmarkGroup()
 
 include("../src/SpaceStation/iss.jl")

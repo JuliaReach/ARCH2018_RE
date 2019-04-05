@@ -23,7 +23,7 @@ This year we have considered purely continuous models only. These are:
 
 **Overview.** To install and run the benchmarks, basically these three steps are needed:
 
-1. Download and install Julia using the official download links.
+1. Download and install Julia v0.6.4 using the official download links.
 2. Clone this repository and run the script `install.jl` to install the required
    Julia packages and dependencies.
 3. Run the benchmarks to obtain results using the script `run.jl`; the reuslts

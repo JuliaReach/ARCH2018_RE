@@ -90,7 +90,7 @@ connection and machine, may take around 15-30 minutes.
 
 ## Running the benchmarks
 
-To run the benchmarks execute the `run.jl` script provided in this package:
+To run the benchmarks, execute the `run.jl` script provided in this package:
 
 ```
 $ julia --color=yes run.jl

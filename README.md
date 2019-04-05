@@ -23,10 +23,11 @@ This year we have considered purely continuous models only. These are:
 
 **Overview.** To install and run the benchmarks, basically these three steps are needed:
 
-1. Download and install Julia using the official download links.
-2. Download `Reachability.jl` and its dependencies. For that purpose we provide the script `install.sh`.
-3. Run the benchmarks and obtain results. For that purpose we provide the script `run.sh`. The results
-   are saved in the file `results.md`.
+1. Download and install Julia v0.6.4 using the official download links.
+2. Clone this repository and run the script `install.jl` to install the required
+   Julia packages and dependencies.
+3. Run the benchmarks to obtain results using the script `run.jl`; the reuslts
+   are stored in `results.md`.
 
 Below we explain these steps in some detail. A section on known issues is given
 in the end. If you still have problems or questions, do contact us in
@@ -45,62 +46,64 @@ For next year we plan to add support for hybrid dynamics, which will require a c
 
 ## Installation
 
-This package requires Julia v0.6.x. Refer to the [official documentation](https://julialang.org/downloads)
-on how to install and run Julia in your system.
+**IMPORTANT NOTE.** The `master` branch in this repository and the installation
+script `install.jl` are meant to be a "screenshot" of the packages ecosystem for
+this RE. If you intend to use JuliaReach for other purposes than RE, we strongly recommend
+that you use instead the currently long-term support Julia version, and follow the installation
+instructions in [Reachability.jl](https://github.com/JuliaReach/Reachability.jl).
+Moreover, the [ReachabilityBenchmarks](https://github.com/JuliaReach/ReachabilityBenchmarks.jl)
+project contains updated model files for the latest package versions.
 
-Once you have installed Julia, you should be able to open it in a terminal (shell)
-with the command `julia`, and see the welcome message similar to
+This RE requires Julia `v0.6.4`. Refer to the [official documentation](https://julialang.org/downloads)
+on how to install and run Julia in your system. As of 05/04/2019, Julia version
+`v0.6.4` is found under the [older releases](https://julialang.org/downloads/oldreleases.html) page.
+This RE does not work with Julia v1.0 or higher (see note above).
 
+After installing Julia, the REPL (read-evaluate-print-loop) welcome message
+should look like:
 
 ```
 $ julia
                _
    _       _ _(_)_     |  A fresh approach to technical computing
   (_)     | (_) (_)    |  Documentation: https://docs.julialang.org
-
    _ _   _| |_  __ _   |  Type "?help" for help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 0.6.1 (2017-10-24 22:15 UTC)
+  | | |_| | | | (_| |  |  Version 0.6.4 (2018-07-09 19:09 UTC)
  _/ |\__'_|_|_|\__'_|  |  Official http://julialang.org/ release
 |__/                   |  x86_64-apple-darwin14.5.0
 
 julia>
 ```
 
-To install the reachability API we provide the shell script `install.sh` contained
-in this folder. Execute the script `install.sh` with the command:
+Clone this repository and then install this RE and dependencies with the
+self-contained script `install.jl`.
 
 ```
-$ ./install.sh
+$ git clone https://github.com/JuliaReach/ARCH2018_RE.git
+$ cd ARCH2018_RE/
+$ julia --color=yes install.jl
 ```
 
-*Note.* The script `install.sh` evaluates the following commands in your Julia installation:
-
-```julia
-julia> Pkg.clone("https://github.com/JuliaReach/Reachability.git")
-julia> Pkg.clone("https://github.com/JuliaReach/ARCH2018_RE.git")
-```
-Since `Reachability.jl` has several dependencies and the other packages also
-have their dependencies, this whole process will take between 5-20 minutes in a
-fresh Julia installation.
+*Note.* The installation and compilation of dependencies, with an average internet
+connection and machine, may take around 15-30 minutes.
 
 ## Running the benchmarks
 
-To run and get the benchmark results in the file `results.md`, execute the
-Julia script `run.julia` with the command:
+To run the benchmarks, execute the `run.jl` script provided in this package:
 
 ```
 $ julia --color=yes run.jl
 ```
 
-The `results.md` file is saved in your current working directory.
+A `results.md` file containing the results for each benchmark in tabular format is
+saved in your current working directory.
 
 *Note.*  To obtain statistically meaningful performance measures, each reachability
-computation is performed several times. The script can take several minutes.
-
-In the results tables, the reported time is the minimum time in seconds for each
-safety property check. Other statistics such as mean and max values can be found
-by looking at the entries of the `results` structure.
+computation is performed several times. The script can take several minutes. The
+time displayed in the tables is the minimum time for the given trials. If you are
+interested in other statistics, such as mean or median, these can be found by
+looking at the entries of the `results` object.
 
 For more advanced testing settings we refer to the official
 [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl/blob/master/doc/manual.md)
@@ -108,16 +111,9 @@ documentation.
 
 ## Troubleshooting
 
-1. To be able to run the shell script, you may have to give the appropriate permissions.
-   In Linux and MacOS systems this is done with the command:
+1. If running one scripts give failures, try running it a second time.
 
-   ```
-   $ chmod 744 install.sh
-   ```
+2. See also the installation instructions of the [LazySets.jl](https://juliareach.github.io/LazySets.jl/latest/man/getting_started.html) library.
 
-2. If running one scripts give failures, try running it a second time.
-
-3. See also the installation instructions of the [LazySets.jl](https://juliareach.github.io/LazySets.jl/latest/man/getting_started.html) library.
-
-4. If you still have trouble, don't hesitate to contact us in our
+3. If you still have trouble, don't hesitate to contact us in our
 [gitter channel](https://gitter.im/JuliaReach/Lobby).

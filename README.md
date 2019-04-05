@@ -46,56 +46,57 @@ For next year we plan to add support for hybrid dynamics, which will require a c
 
 ## Installation
 
-**Important note.** The `master` branch in this repository and the installation
-script `install.jl` are thought to be a "screenshot" of the packages ecosystem for
-this RE. If you intend to use JuliaReach for other purposes, we highly recommend
-that you use the currently long-term support Julia version and follow the installation
+**IMPORTANT NOTE.** The `master` branch in this repository and the installation
+script `install.jl` are meant to be a "screenshot" of the packages ecosystem for
+this RE. If you intend to use JuliaReach for other purposes than RE, we strongly recommend
+that you use instead the currently long-term support Julia version, and follow the installation
 instructions in [Reachability.jl](https://github.com/JuliaReach/Reachability.jl).
-See also the [ReachabilityBenchmarks](https://github.com/JuliaReach/ReachabilityBenchmarks.jl)
-project, which contains updated model files for the latest packages versions.
+Moreover, the [ReachabilityBenchmarks](https://github.com/JuliaReach/ReachabilityBenchmarks.jl)
+project contains updated model files for the latest package versions.
 
-This RE requires Julia v0.6.4. Refer to the [official documentation](https://julialang.org/downloads)
-on how to install and run Julia in your system. Notice that v0.6.4 is currently
-found under the *older releases* page.
+This RE requires Julia `v0.6.4`. Refer to the [official documentation](https://julialang.org/downloads)
+on how to install and run Julia in your system. As of 05/04/2019, Julia version
+`v0.6.4` is found under the [older releases](https://julialang.org/downloads/oldreleases.html) page.
+This RE does not work with Julia v1.0 or higher (see note above).
 
-Once you have installed Julia, you should be able to change directory where the
-command `julia` is available to run the program, and once you do `$ julia`,
-the welcome message similar to:
+After installing Julia, the REPL (read-evaluate-print-loop) welcome message
+should look like:
 
 ```
 $ julia
                _
    _       _ _(_)_     |  A fresh approach to technical computing
   (_)     | (_) (_)    |  Documentation: https://docs.julialang.org
-
    _ _   _| |_  __ _   |  Type "?help" for help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 0.6.1 (2017-10-24 22:15 UTC)
+  | | |_| | | | (_| |  |  Version 0.6.4 (2018-07-09 19:09 UTC)
  _/ |\__'_|_|_|\__'_|  |  Official http://julialang.org/ release
 |__/                   |  x86_64-apple-darwin14.5.0
 
 julia>
 ```
 
-To install the reachability API we provide the script `install.jl`.
-Execute the script with the command:
+Clone this repository and then install this RE and dependencies with the
+self-contained script `install.jl`.
 
 ```
+$ git clone https://github.com/JuliaReach/ARCH2018_RE.git
+$ cd ARCH2018_RE/
 $ julia --color=yes install.jl
 ```
 
-*Note.* The installation and compilation time depends with an average internet
-connection can take around 10-20 minutes.
+*Note.* The installation and compilation of dependencies, with an average internet
+connection and machine, may take around 15-30 minutes.
 
 ## Running the benchmarks
 
-To run the benchmarks execute:
+To run the benchmarks execute the `run.jl` script provided in this package:
 
 ```
 $ julia --color=yes run.jl
 ```
 
-A `results.md` file containing the results for each benchmark in table format is
+A `results.md` file containing the results for each benchmark in tabular format is
 saved in your current working directory.
 
 *Note.*  To obtain statistically meaningful performance measures, each reachability

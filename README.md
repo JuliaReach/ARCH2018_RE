@@ -1,20 +1,53 @@
-# ARCH2018_RE
+# ARCH2018 AFF
 
-:trophy: :nerd_face: The *Most Promising Research Award* of the ARCH 2018 Friendly Competition was given to [JuliaReach](juliareach.org) for the results obtained in the `ARCH2018_RE`, see the [announcement here](https://cps-vo.org/node/55228).
+This is the JuliaReach repeatability evaluation (RE) package for the ARCH-COMP
+2018 category report: Continuous and Hybrid Systems with Linear Continuous
+Dynamics of the 2nd International Competition on Verifying Continuous and Hybrid
+Systems (ARCH-COMP '18).
 
----
+:trophy: :nerd_face: The *Best Result Award* of the ARCH 2018 Friendly Competition
+was given to [JuliaReach](juliareach.org). See the
+[announcement here](https://cps-vo.org/node/55228).
 
-:newspaper: :checkered_flag: The paper with the results of the RE is now available online, [ARCH-COMP18 Category Report: Continuous and Hybrid Systems with Linear Continuous Dynamics](https://easychair.org/publications/paper/4cGr). Matthias Althoff, Stanley Bak, Xin Chen, Chuchu Fan, Marcelo Forets, Goran Frehse, Niklas Kochdumper, Yangge Li, Sayan Mitra, Rajarshi Ray, Christian Schilling and Stefan Schupp (2018) ARCH18. 5th International Workshop on Applied Verification of Continuous and Hybrid Systems, 54: 23–52. doi: 10.29007/73mb. Packages: [Reachability.jl.](https://github.com/JuliaReach/Reachability.jl)
+To cite the work, you can use:
 
----
+```
+@inproceedings{AlthoffB0FFFKLM18,
+  author    = {Matthias Althoff and
+               Stanley Bak and
+               Xin Chen and
+               Chuchu Fan and
+               Marcelo Forets and
+               Goran Frehse and
+               Niklas Kochdumper and
+               Yangge Li and
+               Sayan Mitra and
+               Rajarshi Ray and
+               Christian Schilling and
+               Stefan Schupp},
+  editor    = {Goran Frehse and
+               Matthias Althoff and
+               Sergiy Bogomolov and
+               Taylor T. Johnson},
+  title     = {{ARCH-COMP18} Category Report: Continuous and Hybrid Systems with
+               Linear Continuous Dynamics},
+  booktitle = {{ARCH}},
+  series    = {EPiC Series in Computing},
+  volume    = {54},
+  pages     = {23--52},
+  publisher = {EasyChair},
+  year      = {2018},
+  url       = {https://doi.org/10.29007/73mb},
+  doi       = {10.29007/73mb}
+}
+```
 
-This is the readme file of the ARCH2018 Repeatibility Evaluation (RE) package.
+## Introduction
+
 Instructions are provided for installing and running the benchmarks.
 
 *Note.* `ARCH18_RE.jl` is just a "wrapper" module for running the benchmarks of this RE.
 The actual algorithms belong to the package [Reachability.jl](https://github.com/JuliaReach/Reachability.jl).
-
-## Introduction
 
 This year we have considered purely continuous models only. These are:
 
@@ -111,7 +144,7 @@ documentation.
 
 ## Troubleshooting
 
-1. If running one scripts give failures, try running it a second time.
+1. If running one of the scripts fails, try running it a second time.
 
 2. See also the installation instructions of the [LazySets.jl](https://juliareach.github.io/LazySets.jl/latest/man/getting_started.html) library.
 
